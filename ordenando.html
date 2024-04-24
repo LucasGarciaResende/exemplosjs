@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenando Valores</title>
+    <link rel="stylesheet" href="ordenando.css">
+</head>
+<body>
+    <h1 class="titulo">Ordenando Valores</h1>
+    <main>
+        <div>
+            <form>
+                <label for="valor">Valor</label><br>
+                <input type="number" id="valor" class="input"><br>
+                <button class="botao" type="button" onclick="add()">Adicionar</button>
+            </form>
+        </div>
+        <hr class="borda">
+        <div>    
+            <form>
+                <select id="selecao" class="input">
+                    <option value="bubble" selected>Bubble Sort</option>
+                    <option value="selection">Selection Sort</option>
+                    <option value="quick">Quick Sort</option>
+                </select><br>
+                <button class="botao" type="button" onclick="ordenar()">Ordenar</button>
+                <button class="botao" type= "button" onClick="misturar()">Misturar</button>
+            </form>
+        </div>
+        <hr class="borda">
+        <div>
+            <ul id="valores">
+            </ul>
+        </div>
+    </main>
+</body>
+<script src="ordenando.js"></script>
+<script type="text/javascript">
+function add(){
+    const valor = document.getElementById("valor").value;
+    const valores = document.getElementById("valores");
+    const node = document.createElement("li");
+    node.innerText = `${valor}`;
+    valores.appendChild(node);
+    document.getElementById("valor").value = "";
+}
+
+    function ordenar(){
+        const selecao = document.getElementById("selecao");
+        const valores = document.getElementById("valores");
+        const children = valores.children;
+        let vetor = [];
+        for (let i = 0; i < children.length; i++){
+            const node = children[i];
+            const valor = Number(node.innerText);
+            vetor.push(valor);
+        }
+        let alg = selecao.selectedIndex;
+        switch(alg){
+            case 0:
+                vetor = bubble_sort(vetor);
+                break;
+            case 1:
+                vetor = selection_sort(vetor);
+                break;
+            case 2:
+                vetor = quick_sort(vetor);
+        }
+        valores.innerHTML = "";
+        for (let i = 0; i < vetor.length; i++) {
+            const listItem = document.createElement("li");
+            listItem.innerText = vetor[i];
+            valores.appendChild(listItem);
+        }
+    }
+
+    function misturar(){
+        
+        const selecao = document.getElementById("selecao");
+        const valores = document.getElementById("valores");
+        const children = valores.children;
+        let vetor = [];
+        for (let i = 0; i < children.length; i++){
+            const node = children[i];
+            const valor = Number(node.innerText);
+            vetor.push(valor);
+        }
+        let alg = selecao.selectedIndex;
+        vetor = shuffle(vetor, 1);
+        valores.innerHTML = "";
+        for (let i = 0; i < vetor.length; i++) {
+            const listItem = document.createElement("li");
+            listItem.innerText = vetor[i];
+            valores.appendChild(listItem);
+        }
+    }
+</script>
+</html>

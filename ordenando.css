@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+* {
+    font: normal 15px 'Quicksand', Garamond, serif;
+    color: black;
+}
+
+.titulo{
+    font-weight: bolder;
+    font-size: 25px;
+}
+
+.botao{
+    font-size: 12px;
+    border-radius: 5px;
+    padding: 0.6em 0.6em;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: royalblue;
+    color: whitesmoke;
+    margin-top: 5px;
+}
+
+.botao:hover{
+    background-color: blue;
+}
+
+.botao:active{
+    background-color: midnightblue;
+}
+
+.input{
+    width: 400px;
+    border-radius: 5px;
+    border-color: lightgray;
+    height: 25px;
+    border: solid 1px lightgray;
+}
+
+#selecao{
+    width: 408px;
+}
+
+.borda{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height:1px;
+    width: 410px;
+    border-width:0;
+    color:lightgray;
+    background-color:lightgray;
+    display: inline-block;
+}

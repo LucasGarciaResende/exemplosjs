@@ -68,16 +68,12 @@ function add(){
                 vetor = quick_sort(vetor);
         }
         valores.innerHTML = "";
-        for (let i = 0; i < vetor.length; i++) {
-            const listItem = document.createElement("li");
-            listItem.innerText = vetor[i];
-            valores.appendChild(listItem);
-        }
+        const novaLista = vetor.map(value => `<li>${value}</li>`).reduce((anterior, atual) => anterior + atual, "");
+        valores.innerHTML = novaLista;
+
     }
 
     function misturar(){
-        
-        const selecao = document.getElementById("selecao");
         const valores = document.getElementById("valores");
         const children = valores.children;
         let vetor = [];
@@ -86,14 +82,10 @@ function add(){
             const valor = Number(node.innerText);
             vetor.push(valor);
         }
-        let alg = selecao.selectedIndex;
         vetor = shuffle(vetor, 1);
         valores.innerHTML = "";
-        for (let i = 0; i < vetor.length; i++) {
-            const listItem = document.createElement("li");
-            listItem.innerText = vetor[i];
-            valores.appendChild(listItem);
-        }
+        const valor = vetor.map(value => `<li>${value}</li>`).reduce((anterior, atual) => anterior + atual, "");
+        valores.innerHTML = novaLista;    
     }
 </script>
 </html>

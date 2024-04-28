@@ -45,15 +45,15 @@
     const getListaIngredientes = (receita) => {
       const ingredientes = receita.ingredientes;
       let text = '<ul>';
-      const lista = ingredientes.map(ingrediente => `<li>${ingrediente}</li>`).reduce((prev, current) => prev + current, '');
+      const lista = ingredientes.map(ingrediente => `<li>${ingrediente}</li>`).reduce((anterior, atual) => anterior + atual, '');
       text += lista;
       text += '</ul>';
       return text;
     };
     const getCard = (receita) => {
-      return`
+      return `
         <div class="card">
-          <img src=${receita.imagem} alt="" class="card-img-top">
+          <img src=${receita.imagem} alt="imagem receita" class="card-img-top">
           <div class="card-body">
             <h5 class="card-title">${receita.titulo}</h5>
             <div class="card-text">${getListaIngredientes(receita)}</div>
@@ -64,9 +64,8 @@
     }
     const preencherCatalago = () => {
       const catalago = document.getElementById('pnlCatalago');
-      globalThis.receitas.forEach(receita => {
-        catalago.innerHTML += getCard(receita);
-      })
+      const painel = receitas.map(receita => getCard(receita)).reduce((anterior, atual) => anterior + atual, '');
+      catalago.innerHTML = painel;
     }
 </script>
 </html>
